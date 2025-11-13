@@ -15,6 +15,9 @@ namespace GameFramework
     /// </summary>
     public static class GameFrameworkEntry
     {
+        /// <summary>
+        /// 根据链表的顺序(Priority)轮询所有GameFrameworkModule
+        /// </summary>
         private static readonly GameFrameworkLinkedList<GameFrameworkModule> s_GameFrameworkModules = new GameFrameworkLinkedList<GameFrameworkModule>();
 
         /// <summary>
@@ -65,6 +68,7 @@ namespace GameFramework
                 throw new GameFrameworkException(Utility.Text.Format("You must get a Game Framework module, but '{0}' is not.", interfaceType.FullName));
             }
 
+            // 将接口名称转换为实现类名
             string moduleName = Utility.Text.Format("{0}.{1}", interfaceType.Namespace, interfaceType.Name.Substring(1));
             Type moduleType = Type.GetType(moduleName);
             if (moduleType == null)
@@ -76,7 +80,7 @@ namespace GameFramework
         }
 
         /// <summary>
-        /// 获取游戏框架模块。
+        /// 获取游戏框架模块，采取惰性实例化。
         /// </summary>
         /// <param name="moduleType">要获取的游戏框架模块类型。</param>
         /// <returns>要获取的游戏框架模块。</returns>
@@ -95,7 +99,7 @@ namespace GameFramework
         }
 
         /// <summary>
-        /// 创建游戏框架模块。
+        /// 创建游戏框架模块，该接口一般在GameFrameworkComponent的派生类的Awake方法中调用
         /// </summary>
         /// <param name="moduleType">要创建的游戏框架模块类型。</param>
         /// <returns>要创建的游戏框架模块。</returns>

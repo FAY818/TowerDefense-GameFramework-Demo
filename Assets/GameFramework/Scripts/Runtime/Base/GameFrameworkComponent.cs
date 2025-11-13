@@ -15,7 +15,7 @@ namespace UnityGameFramework.Runtime
     public abstract class GameFrameworkComponent : MonoBehaviour
     {
         /// <summary>
-        /// 游戏框架组件初始化。
+        /// 游戏框架组件初始化，Awake中注册确保GameEntry.Start中可以正确引用到组件实例
         /// </summary>
         protected virtual void Awake()
         {
