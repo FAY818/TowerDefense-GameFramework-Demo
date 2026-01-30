@@ -69,3 +69,7 @@ Assets/StreamingAssets.meta
 /Packages
 Packages/manifest.json
 /Packages
+/ProjectSettings
+/Packages
+Assets/GameMain/Scripts/.DS_Store
+Assets/GameMain/Scripts/Procedure/.DS_Store
